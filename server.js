@@ -40,5 +40,5 @@ app.listen(port, () => {
 
 // Index route
 app.get("/", function (req, res) {
-  res.render("index", {title: "Juan"})
+  res.render("index", {title: "Home"})
 })
