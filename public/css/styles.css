@@ -1,6 +1,3 @@
-/******* Change Box Model ***************/
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
+@import "/css/normalize.css";
+@import "/css/base.css";
+@import "/css/larger.css";
