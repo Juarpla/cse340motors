@@ -1,10 +1,7 @@
--- Type: account_type
--- DROP TYPE IF EXISTS public.account_type;
+-- Create client_type data type
+DROP TYPE IF EXISTS public.account_type;
 CREATE TYPE public.account_type AS ENUM
     ('Client', 'Employee', 'Admin');
-
-ALTER TYPE public.account_type
-    OWNER TO root;
 
 -- Table structure for table 'classification'
 CREATE TABLE public.classification (
@@ -239,3 +236,12 @@ VALUES   (
     'White',
     5
   );
+
+-- 4. Replace data for table 'public.inventory'
+UPDATE public.inventory
+SET inv_description = REPLACE(inv_description, 'small interiors', 'a huge interior');
+
+-- 6. Update all records in the inventory table to add "/vehicles"
+UPDATE public.inventory
+SET inv_image = REPLACE(inv_image, '/images/', '/images/vehicles/'),
+    inv_thumbnail = REPLACE(inv_thumbnail, '/images/', '/images/vehicles/');
