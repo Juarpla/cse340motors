@@ -154,3 +154,27 @@ figure a {
     width: 100%;
     padding: 5px 0px;
 }
+
+#inv-display {
+    list-style-type: none;
+    text-align: center;
+}
+
+#inv-display  li {
+    width: 300px;
+    border: 1px solid rgb(0, 0, 0);
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 20px;
+    display: inline-block;
+}
+
+#inv-display img {
+    list-style-type: none;
+    width: 100%;
+}
+
+.namePrice {
+    line-height: 2;
+    text-align: center;
+}
