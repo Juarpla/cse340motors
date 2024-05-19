@@ -58,4 +58,18 @@
     #reviews li {
         padding: 12px 0;
     }
+
+    #detail-display {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        column-gap: 15px;
+    }
+
+    #detail-display section {
+        margin: 0;
+    }
+
+    .saleInfo {
+        margin: 0.5rem 0;
+    }
 }

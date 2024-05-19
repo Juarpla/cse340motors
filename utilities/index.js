@@ -57,6 +57,54 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
+/* **************************************
+* Build the single item view HTML
+* ************************************ */
+Util.buildItemGrid = async function(data){
+  let grid
+  if (data) {
+      grid = '<div id="detail-display">';
+      grid +=  '<a href="../../inv/detail/'+ data.inv_id 
+      + '" title="View ' + data.inv_make + ' '+ data.inv_model 
+      + 'details"><img src="' + data.inv_image 
+      +'" alt="Image of '+ data.inv_make + ' ' + data.inv_model 
+        + ' on CSE Motors" /></a>'
+      grid += '<section class="contentCar">';
+      grid += '<div class="saleInfo">'
+      grid += '<h2>'
+      grid += '<a href="../../inv/detail/' + data.inv_id +'" title="View ' 
+      + data.inv_make + ' ' + data.inv_model + ' details">' 
+      + data.inv_make + ' ' + data.inv_model + '</a>'
+      grid += '</h2>'
+      grid +=
+        '<p id="carPrice">$' +
+        new Intl.NumberFormat("en-US").format(data.inv_price) +
+        "</p>";
+      grid += '<p id="carYear">' + data.inv_year + "</p>";
+      grid += "</div>";
+      grid += '<div class="carInfo">';
+      grid += "<p>Model: " + data.inv_model + "</p>";
+      grid += "<p>Made by: " + data.inv_make + "</p>";
+      grid +=
+        "<p>Price: $" +
+        new Intl.NumberFormat("en-US").format(data.inv_price) +
+        "</p>";
+      grid += "<p>Year: " + data.inv_year + "</p>";
+      grid +=
+        "<p>Mileage: " +
+        new Intl.NumberFormat("en-US").format(data.inv_miles) +
+        "</p>";
+      grid += "<p>Color: " + data.inv_color + "</p>";
+      grid += "<p>Description: " + data.inv_description + "</p>";
+    grid += "</div>";
+    grid += '</section>';
+    grid += "</div>";
+  } else { 
+    grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
+  }
+  return grid
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
