@@ -68,7 +68,7 @@ Util.buildItemGrid = async function(data){
       + '" title="View ' + data.inv_make + ' '+ data.inv_model 
       + 'details"><img src="' + data.inv_image 
       +'" alt="Image of '+ data.inv_make + ' ' + data.inv_model 
-        + ' on CSE Motors" /></a>'
+        + ' on CSE Motors"></a>'
       grid += '<section class="contentCar">';
       grid += '<div class="saleInfo">'
       grid += '<h2>'
