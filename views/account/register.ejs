@@ -1,0 +1,60 @@
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else { res.redirect('/') } %>
+<%- messages() %>
+<br>
+<div id="account-container">
+  <form id="registerForm" action="/account/register" method="post">
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input
+        type="text"
+        id="firstName"
+        name="account_firstname"
+        data-trail="account_firstname"
+        required
+      >
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input
+        type="text"
+        id="lastName"
+        name="account_lastname"
+        data-trail="account_lastname"
+        required
+      >
+    </div>
+    <div class="form-group">
+      <label for="email">Email Address:</label>
+      <input
+        type="email"
+        id="email"
+        name="account_email"
+        data-trail="account_email"
+        required
+      >
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="account_password"
+        data-trail="account_password"
+        required
+      >
+    </div>
+    <div class="password-requirements">
+      <p id="password-requirements">Password must:</p>
+      <ul>
+        <li>Be at least 12 characters long</li>
+        <li>Contain at least 1 capital letter</li>
+        <li>Contain at least 1 number</li>
+        <li>Contain at least 1 special character</li>
+      </ul>
+    </div>
+    <button id="pwd-visibility" type="button">Toggle Password Visibility</button>
+    <button type="submit" class="btn-account">Register</button>
+  </form>
+</div>
