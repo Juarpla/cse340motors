@@ -212,7 +212,7 @@ figure a {
 }
 
 #messages {
-    color: red;
+    color: rgb(214, 4, 4);
     margin-left: 2rem;
     font-style: italic;
 }
@@ -309,7 +309,7 @@ input:focus:invalid {
 }
 
 .notice {
-    color: red;
+    color: rgb(214, 4, 4);
     margin-left: 2rem;
     font-style: italic;
 }
