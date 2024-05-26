@@ -307,3 +307,9 @@ input:focus:invalid {
     font-style: italic;
     margin-bottom: 20px;
 }
+
+.notice {
+    color: red;
+    margin-left: 2rem;
+    font-style: italic;
+}

@@ -1,3 +1,5 @@
+const regValidate = require("../utilities/account-validation");
+
 // Needed Resources
 const express = require("express");
 const router = new express.Router();
@@ -16,6 +18,8 @@ router.get(
 // Route to post registration information to database
 router.post(
   "/register",
+  regValidate.registrationRules(),
+  regValidate.checkRegData,
   utilities.handleErrors(accountController.registerAccount)
 );
 
