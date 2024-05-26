@@ -28,12 +28,11 @@ async function checkExistingEmail(account_email){
 /* **********************
  *   Check for existing user
  * ********************* */
-async function checkExistingUser(account_email, account_password) {
+async function checkExistingUser(account_email) {
   try {
     const sql =
-      "SELECT * FROM account WHERE account_email = $1 AND account_password = $2";
-    const email = await pool.query(sql, [account_email, account_password]);
-    return email.rowCount;
+      "SELECT * FROM account WHERE account_email = $1";
+    return await pool.query(sql, [account_email]);
   } catch (error) {
     return error.message;
   }
