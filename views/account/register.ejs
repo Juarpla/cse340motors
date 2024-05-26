@@ -1,9 +1,9 @@
 <% if (title) { %>
 <h1><%= title %></h1>
-<% } else { res.redirect('/') } %>
-<%- messages() %>
-<br>
+<% } else { res.redirect('/') } %> <%- messages() %>
+<br />
 <div id="account-container">
+  <p class="form-advice">📝 All fields are required ✍️</p>
   <form id="registerForm" action="/account/register" method="post">
     <div class="form-group">
       <label for="firstName">First Name:</label>
@@ -11,7 +11,7 @@
         type="text"
         id="firstName"
         name="account_firstname"
-        data-trail="account_firstname"
+        placeholder="Enter a valid first name"
         required
       >
     </div>
@@ -21,7 +21,7 @@
         type="text"
         id="lastName"
         name="account_lastname"
-        data-trail="account_lastname"
+        placeholder="Enter a valid last name"
         required
       >
     </div>
@@ -31,7 +31,7 @@
         type="email"
         id="email"
         name="account_email"
-        data-trail="account_email"
+        placeholder="Enter a valid email address"
         required
       >
     </div>
@@ -41,20 +41,20 @@
         type="password"
         id="password"
         name="account_password"
-        data-trail="account_password"
         required
+        placeholder="Enter a valid password"
+        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
       >
     </div>
-    <div class="password-requirements">
-      <p id="password-requirements">Password must:</p>
-      <ul>
-        <li>Be at least 12 characters long</li>
-        <li>Contain at least 1 capital letter</li>
-        <li>Contain at least 1 number</li>
-        <li>Contain at least 1 special character</li>
-      </ul>
+    <div class="form-advice">
+      <span
+        >Passwords must be at least 12 characters and contain at least 1 number,
+        1 capital letter and 1 special character</span
+      >
     </div>
-    <button id="pwd-visibility" type="button">Toggle Password Visibility</button>
+    <button id="pwd-visibility" type="button">
+      Toggle Password Visibility
+    </button>
     <button type="submit" class="btn-account">Register</button>
   </form>
 </div>

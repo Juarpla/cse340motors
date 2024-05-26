@@ -277,13 +277,6 @@ input {
     margin: 20px 0px;
 }
 
-.password-requirements {
-    font-style: italic;
-    font-size: small;
-    padding-left: 1rem;
-    margin-bottom: 20px;
-}
-
 #pwd-visibility {
     background-color: rgb(173, 173, 173);
     color: black;
@@ -299,4 +292,18 @@ input {
 #pwd-visibility:hover {
     background-color: rgb(54, 54, 54);
     color: white;
+}
+
+input:required:valid {
+    background-color: #d9ffdd;
+}
+
+input:required:invalid,
+input:focus:invalid {
+    background-color: #ffdddd;
+}
+
+.form-advice {
+    font-style: italic;
+    margin-bottom: 20px;
 }
