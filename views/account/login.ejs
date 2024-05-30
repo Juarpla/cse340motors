@@ -2,7 +2,15 @@
 <h1><%= title %></h1>
 <% } else { res.redirect('/') } %> <%- messages() %>
 <br />
-<div id="account-container">
+<% if (errors) { %>
+<ul class="notice">
+  <% errors.array().forEach(error => { %>
+  <li><%= error.msg %></li>
+  <% }) %>
+</ul>
+<br >
+<% } %>
+<div class="form-container">
   <form id="loginForm" action="/account/login" method="post">
     <div class="form-group">
       <label for="email">Email:</label>

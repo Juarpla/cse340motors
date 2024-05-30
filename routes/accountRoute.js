@@ -23,7 +23,7 @@ router.post(
   utilities.handleErrors(accountController.registerAccount)
 );
 
-// Process the login attempt
+// Route to post login attempt
 router.post(
   "/login",
   regValidate.loginRules(),

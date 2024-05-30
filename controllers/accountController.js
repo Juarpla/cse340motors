@@ -51,7 +51,6 @@ async function registerAccount(req, res) {
     res.status(500).render("account/register", {
       title: "Registration",
       nav,
-      errors: null,
     });
   }
 
@@ -88,8 +87,6 @@ async function loginAccount(req, res) {
   const { account_email, account_password } = req.body;
 
   const logResult = await accountModel.checkExistingUser(account_email);
- 
-  console.log("🍅 check ->", logResult);
 
   if (logResult.rowCount !== 1) {
     req.flash("notice", "Sorry, the log in failed.");

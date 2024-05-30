@@ -217,7 +217,7 @@ figure a {
     font-style: italic;
 }
 
-#account-container {
+.form-container {
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
@@ -312,4 +312,35 @@ input:focus:invalid {
     color: rgb(214, 4, 4);
     margin-left: 2rem;
     font-style: italic;
+}
+
+#man-display {
+    list-style: none;
+    margin: auto auto 20px 2rem;
+    line-height: 2;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #909090;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #909090;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+textarea:required:valid {
+    background-color: #d9ffdd;
+}
+
+textarea:required:invalid,
+textarea:focus:invalid {
+    background-color: #ffdddd;
 }
