@@ -121,6 +121,9 @@ invCont.addNewVehicle = async function (req, res) {
     inv_color,
   } = req.body;
 
+  const new_price = Number(inv_price);
+  const new_miles = Number(inv_miles);
+
   const classResult = await invModel.registerVehicle(
     classification_id,
     inv_make,
@@ -128,9 +131,9 @@ invCont.addNewVehicle = async function (req, res) {
     inv_description,
     inv_image,
     inv_thumbnail,
-    inv_price,
+    new_price,
     inv_year,
-    inv_miles,
+    new_miles,
     inv_color
   );
 
