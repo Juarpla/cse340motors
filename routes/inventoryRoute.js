@@ -33,6 +33,12 @@ router.get(
   utilities.handleErrors(invController.buildAddInventory)
 );
 
+// Route to get the inventory data as JSON for AJAX Route
+router.get(
+  "/getInventory/:classification_id",
+  utilities.handleErrors(invController.getInventoryJSON)
+);
+
 // Route to post "Add Classification Name" to database
 router.post(
   "/add-classification",

@@ -725,6 +725,16 @@ textarea:focus:invalid {
     background-color: #ffdddd;
 }
 
+#manage-inventory {
+    max-width: 25rem;
+    line-height: 2;
+    margin: 20px 0;
+}
+
+#manage-inventory table {
+    width: 100%;
+}
+
 @media only screen and (min-width: 51rem) {
     html {
         background-image: url("/images/site/small_check.jpg");
