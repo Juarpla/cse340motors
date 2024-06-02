@@ -39,6 +39,12 @@ router.get(
   utilities.handleErrors(invController.getInventoryJSON)
 );
 
+// Route sent when the "Edit New Vehicle" link is clicked
+router.get(
+  "/edit/:inv_id",
+  utilities.handleErrors(invController.buildEditInventory)
+);
+
 // Route to post "Add Classification Name" to database
 router.post(
   "/add-classification",
@@ -53,6 +59,14 @@ router.post(
   invValidate.addInventoryRules(),
   invValidate.checkInventoryData,
   utilities.handleErrors(invController.addNewVehicle)
+);
+
+// Route to post "Update Vehicle" to database
+router.post(
+  "/update/",
+  invValidate.addInventoryRules(),
+  invValidate.checkUpdateData,
+  utilities.handleErrors(invController.updateInventory)
 );
 
 module.exports = router;

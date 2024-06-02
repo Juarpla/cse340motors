@@ -653,6 +653,12 @@ input {
     color: white;
 }
 
+.btn-account:disabled {
+    background-color: #cccccc;
+    color: black;
+    cursor: not-allowed;
+}
+
 #no-account {
     margin: 20px 0px;
 }
