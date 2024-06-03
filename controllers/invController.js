@@ -82,6 +82,7 @@ invCont.buildAddInventory = async function (req, res, next) {
 invCont.addClassificationName = async function (req, res) {
   let nav = await utilities.getNav();
   const { classification_name } = req.body;
+  const classificationSelect = await utilities.buildClassificationList();
 
   const classResult = await invModel.registerClassification(classification_name);
 
@@ -93,12 +94,14 @@ invCont.addClassificationName = async function (req, res) {
     res.status(201).render("./inventory", {
       title: "Vehicle Management",
       nav,
+      classificationSelect,
     });
   } else {
     req.flash("notice", "Sorry, the registration failed.");
     res.status(501).render("./inventory/add-classification", {
       title: "Add Classification",
       nav,
+      classificationSelect,
     });
   }
 };
@@ -108,7 +111,7 @@ invCont.addClassificationName = async function (req, res) {
  * *************************************** */
 invCont.addNewVehicle = async function (req, res) {
   let nav = await utilities.getNav();
-  let classificationList = await utilities.buildClassificationList();
+  const classificationSelect = await utilities.buildClassificationList();
   
   const {
     classification_id,
@@ -147,14 +150,14 @@ invCont.addNewVehicle = async function (req, res) {
     res.status(201).render("./inventory", {
       title: "Vehicle Management",
       nav,
-      classificationList,
+      classificationSelect,
     });
   } else {
     req.flash("notice", "Sorry, the registration failed.");
     res.status(501).render("./inventory/add-classification", {
       title: "Add Classification",
       nav,
-      classificationList,
+      classificationSelect,
     });
   }
 };
@@ -261,6 +264,41 @@ invCont.updateInventory = async function (req, res, next) {
       inv_color,
       classification_id,
     });
+  }
+};
+
+/* ****************************************
+ *  Deliver delete confirmation view
+ * *************************************** */
+invCont.deleteView = async function (req, res, next) {
+  const inventory_id = parseInt(req.params.inv_id);
+  let nav = await utilities.getNav();
+  const itemData = await invModel.getItemByInvId(inventory_id);
+  const itemName = `${itemData.inv_make} ${itemData.inv_model}`;
+  res.render("./inventory/delete-confirm", {
+    title: "Delete " + itemName,
+    nav,
+    errors: null,
+    inv_id: itemData.inv_id,
+    inv_make: itemData.inv_make,
+    inv_model: itemData.inv_model,
+    inv_year: itemData.inv_year,
+    inv_price: itemData.inv_price,
+  });
+};
+
+/* ****************************************
+ *  Process delete Inventory Item
+ * *************************************** */
+invCont.deleteItem = async function (req, res, next) {
+  const { inv_id } = req.body;
+  const deleteResult = await invModel.deleteInventoryItem(inv_id);
+  if (deleteResult) {
+    req.flash("notice", "The deletion was successful.");
+    res.redirect("/inv/");
+  } else {
+    req.flash("notice", "Sorry, the delete failed.")
+    res.redirect("/inv/");
   }
 };
 

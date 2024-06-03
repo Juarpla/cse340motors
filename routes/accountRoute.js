@@ -13,7 +13,7 @@ router.get(
   utilities.handleErrors(accountController.buildAccountManagement)
 );
 
-// Route sent when the "My Account" link is clicked
+// Route sent when login link is clicked
 router.get("/login", utilities.handleErrors(accountController.buildLogin));
 
 // Route sent when the "My Account" link is clicked
