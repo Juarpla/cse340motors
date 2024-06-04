@@ -19,35 +19,44 @@ router.get(
 );
 
 // Route to build vehicle management view
-router.get("/", utilities.handleErrors(invController.buildVehicleManagement));
+router.get(
+  "/",
+  utilities.checkAccountType,
+  utilities.handleErrors(invController.buildVehicleManagement)
+);
 
 // Route sent when the "Add New Classification" link is clicked
 router.get(
   "/add-classification",
+  utilities.checkAccountType,
   utilities.handleErrors(invController.buildAddClassification)
 );
 
 // Route sent when the "Add New Vehicle" link is clicked
 router.get(
   "/add-inventory",
+  utilities.checkAccountType,
   utilities.handleErrors(invController.buildAddInventory)
 );
 
 // Route to get the inventory data as JSON for AJAX Route
 router.get(
   "/getInventory/:classification_id",
+  utilities.checkAccountType,
   utilities.handleErrors(invController.getInventoryJSON)
 );
 
 // Route sent when the "Edit New Vehicle" link is clicked
 router.get(
   "/edit/:inv_id",
+  utilities.checkAccountType,
   utilities.handleErrors(invController.buildEditInventory)
 );
 
 // Route to post "Add Classification Name" to database
 router.post(
   "/add-classification",
+  utilities.checkAccountType,
   invValidate.addClassificationRules(),
   invValidate.checkClassificationData,
   utilities.handleErrors(invController.addClassificationName)
@@ -56,6 +65,7 @@ router.post(
 // Route to post "Add New Vehicle" to database
 router.post(
   "/add-inventory",
+  utilities.checkAccountType,
   invValidate.addInventoryRules(),
   invValidate.checkInventoryData,
   utilities.handleErrors(invController.addNewVehicle)
@@ -64,6 +74,7 @@ router.post(
 // Route to post "Update Vehicle" to database
 router.post(
   "/update/",
+  utilities.checkAccountType,
   invValidate.addInventoryRules(),
   invValidate.checkUpdateData,
   utilities.handleErrors(invController.updateInventory)
@@ -72,12 +83,14 @@ router.post(
 // Deliver the delete confirmation view
 router.get(
   "/delete/:inv_id",
+  utilities.checkAccountType,
   utilities.handleErrors(invController.deleteView)
 );
 
 // Process the delete inventory request
 router.post(
   "/delete",
+  utilities.checkAccountType,
   utilities.handleErrors(invController.deleteItem)
 );
 

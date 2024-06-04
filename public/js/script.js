@@ -15,3 +15,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const logoutLink = document.querySelector('a[href="/logout"]');
+  if (logoutLink) {
+    logoutLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      fetch("/logout", {
+        method: "POST",
+        credentials: "same-origin",
+      })
+        .then((response) => {
+          if (response.ok) {
+            window.location.href = "/";
+          } else {
+            console.error("Error logout");
+          }
+        })
+        .catch((error) => {
+          console.error("Error logout:", error);
+        });
+    });
+  }
+});

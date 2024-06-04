@@ -137,10 +137,20 @@ async function accountLogin(req, res) {
   }
 }
 
+/* ****************************************
+ *  Process Logout
+ * *************************************** */
+const logout = (req, res) => {
+  res.clearCookie("jwt");
+  res.clearCookie("userName");
+  res.redirect("/");
+};
+
 module.exports = {
   buildLogin,
   buildRegister,
   registerAccount,
   accountLogin,
   buildAccountManagement,
+  logout,
 };

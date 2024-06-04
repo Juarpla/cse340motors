@@ -19,6 +19,7 @@ const inventoryRoute = require("./routes/inventoryRoute");
 const accountRoute = require("./routes/accountRoute");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const accountController = require("./controllers/accountController");
 
 /* ***********************
  * View Engine and Templates
@@ -47,6 +48,10 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 app.use(cookieParser());
 app.use(utilities.checkJWTToken);
+app.use((req, res, next) => {
+  res.locals.cookies = req.cookies;
+  next();
+});
 
 // Express Messages Middleware
 app.use(require("connect-flash")());
@@ -65,6 +70,8 @@ app.get("/", utilities.handleErrors(baseController.buildHome));
 app.use("/inv", inventoryRoute);
 // Account route
 app.use("/account", accountRoute);
+// Logout route
+app.post("/logout", utilities.handleErrors(accountController.logout));
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
