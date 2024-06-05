@@ -731,13 +731,13 @@ textarea:focus:invalid {
     background-color: #ffdddd;
 }
 
-#manage-inventory {
+.manager-container {
     max-width: 25rem;
     line-height: 2;
     margin: 20px 0;
 }
 
-#manage-inventory table {
+.manager-container table {
     width: 100%;
 }
 

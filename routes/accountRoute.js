@@ -22,6 +22,29 @@ router.get(
   utilities.handleErrors(accountController.buildRegister)
 );
 
+// Route sent to Account Update View
+router.get(
+  "/update/:account_id",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildAccountUpdate)
+);
+
+// Route to post Edit Account Info
+router.post(
+  "/update/info",
+  accountValidate.updateInfoRules(),
+  accountValidate.checkUpdateInfoData,
+  utilities.handleErrors(accountController.updateAccountInfo),
+);
+
+// Route to post Edit Password
+router.post(
+  "/update/password",
+  accountValidate.updatePwdRules(),
+  accountValidate.checkUpdatePassword,
+  utilities.handleErrors(accountController.updatePassword)
+);
+
 // Route to post registration information to database
 router.post(
   "/register",

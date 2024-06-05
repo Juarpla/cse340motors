@@ -1,8 +1,8 @@
 <% if (title) { %>
 <h1><%= title %></h1>
 <% } else { res.redirect('/') } %> <%- messages() %>
-<br />
 <% if (errors) { %>
+<br />  
 <ul class="notice">
   <% errors.array().forEach(error => { %>
   <li><%= error.msg %></li>
@@ -10,8 +10,19 @@
 </ul>
 <br />
 <% } %>
-<div>
-  <h1>Welcome Here</h1>
-  <p>You're logged in</p>
-  <br />
+<div class="manager-container">
+  <section class="manager-container">
+    <h2>Welcome <%= locals.accountData.account_firstname %></h2>
+    <p>You're logged in</p>
+    <a href="/account/update/<%= locals.accountData.account_id %>" title='Click to update'>Update Account Information</a>
+  </section>
+
+  <section class="manager-container">
+    <% if (locals.accountData.account_type === 'Employee' || locals.accountData.account_type === 'Admin') { %>
+      <h3>Inventory Management</h3>
+      <div>
+        <a href="/inv">Manage Inventory</a>
+      </div>
+    <% } %>
+  </section>
 </div>
