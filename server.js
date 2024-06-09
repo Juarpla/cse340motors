@@ -17,6 +17,7 @@ const static = require("./routes/static");
 const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
 const accountRoute = require("./routes/accountRoute");
+const usersRoute = require("./routes/usersRoute");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const accountController = require("./controllers/accountController");
@@ -70,6 +71,8 @@ app.get("/", utilities.handleErrors(baseController.buildHome));
 app.use("/inv", inventoryRoute);
 // Account route
 app.use("/account", accountRoute);
+// Account route
+app.use("/users", usersRoute);
 // Logout route
 app.post("/logout", utilities.handleErrors(accountController.logout));
 

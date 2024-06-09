@@ -25,4 +25,13 @@
       </div>
     <% } %>
   </section>
+
+  <section class="manager-container">
+    <% if (locals.accountData.account_type === 'Admin') { %>
+      <h3>Users Management</h3>
+      <div>
+        <a href="/users">Users List</a>
+      </div>
+    <% } %>
+  </section>
 </div>

@@ -172,7 +172,7 @@ Util.checkLogin = (req, res, next) => {
 }
  
 /* ****************************************
- *  Check Account Type
+ *  Check Account Type no Client
  * ************************************ */
 Util.checkAccountType = (req, res, next) => {
   const accountType = res.locals.accountData.account_type;
@@ -181,6 +181,19 @@ Util.checkAccountType = (req, res, next) => {
   } else {
     req.flash("notice", "Please log in with Authorized account.");
     return res.redirect("/account/login");
+  }
+};
+
+/* ****************************************
+ *  Check Account Type is Admin
+ * ************************************ */
+Util.checkAdminAccountType = (req, res, next) => {
+  const accountType = res.locals.accountData.account_type;
+  if (accountType !== "Admin") {
+    req.flash("notice", "Please log in with Authorized account.");
+    return res.redirect("/account/login");
+  } else {
+    next();
   }
 };
 
